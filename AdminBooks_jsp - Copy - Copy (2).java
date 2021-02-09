@@ -37,6 +37,17 @@ public class AdminBooks_jsp extends HttpJspBase {
     }
     return (sErr);
   }
+  
+  public static String loadDriverCopy () {
+    String sErr = "";
+    try {
+      java.sql.DriverManager.registerDriver((java.sql.Driver)(Class.forName(DBDriver).newInstance()));
+    }
+    catch (Exception e) {
+      sErr = e.toString();
+    }
+    return (sErr); // aaa
+  }
 
   public static void absolute(java.sql.ResultSet rs, int row) throws java.sql.SQLException{
     for(int x=1;x<row;x++) rs.next();
