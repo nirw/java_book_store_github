@@ -24,11 +24,20 @@ public class BookMaint_jsp extends HttpJspBase {
   static final String appPath   ="/";
 
 //Database connection string
+	try {
+    	Properties props = new Properties(); 
+      	FileInputStream fis = new FileInputStream(PROP_FILENAME);
+      	props.load(fis);
+      	fis.close();
+    } catch (IOException e) {
+      	handleErrors(e);
+    }
+
 
   static final String DBDriver  ="";
   static final String strConn   ="";
-  static final String DBusername="";
-  static final String DBpassword="";
+  static final String DBusername=props.getProperty(PROP_USERNAME); 
+  static final String DBpassword=decrypt(props.getProperty(PROP_PASSWORD));
 
   public static String loadDriver () {
     String sErr = "";
