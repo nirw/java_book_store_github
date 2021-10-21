@@ -31,7 +31,7 @@ jobs:
         #JAVA_TOOL_OPTIONS: '-Dhttps.proxyHost=1.1.1.1 -Dhttps.proxyPort=1234'
       uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.1
       with:
-        project: GitHub-find-sec-bugs-${{ steps.get-branch.outputs.branch }}
+        project: GitHub-java_book_store_github-${{ steps.get-branch.outputs.branch }}
         team: '/CxServer/SP/ANZ'
         checkmarx_url: ${{ secrets.CHECKMARX_URL }}
         checkmarx_username: ${{ secrets.CHECKMARX_USERNAME }}
