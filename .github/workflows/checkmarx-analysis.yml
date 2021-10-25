@@ -39,7 +39,7 @@ jobs:
         github_token: ${{ secrets.GH_TOKEN }}
         incremental: false
         break_build: false
-        #scanners: sast
+        scanners: sast
         bug_tracker: Sarif
         params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }} --http-read-timeout=600000
     # Upload the Report for CodeQL/Security Alerts
