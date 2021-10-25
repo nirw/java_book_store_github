@@ -2,7 +2,6 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 import org.apache.jasper.runtime.*;
-import org.identityconnectors.common.security.GuardedString.*;
 
 public class Registration_jsp extends HttpJspBase {
 
@@ -463,7 +462,7 @@ static final String sFileName = "Registration.jsp";
 
 
       String fldmember_login="";
-      //String fldmember_password="";
+      String fldmember_password="";
       String fldfirst_name="";
       String fldlast_name="";
       String fldemail="";
@@ -477,10 +476,8 @@ static final String sFileName = "Registration.jsp";
       // Load all form fields into variables
     
       fldmember_login = getParam(request, "member_login");
-      //fldmember_password = getParam(request, "member_password");
-      GuardedString fldmember_password = new GuardedString(getParam(request, "member_password").toCharArray());
-      //fldmember_password2 = getParam(request, "member_password2");
-      GuardedString fldmember_password2 = new GuardedString(getParam(request, "member_password2").toCharArray());
+      fldmember_password = getParam(request, "member_password");
+      fldmember_password2 = getParam(request, "member_password2");
       fldfirst_name = getParam(request, "first_name");
       fldlast_name = getParam(request, "last_name");
       fldemail = getParam(request, "email");
@@ -608,7 +605,7 @@ if ( ! getParam( request, "member_password" ).equals(getParam( request,"member_p
 
       String fldmember_id="";
       String fldmember_login="";
-      //String fldmember_password="";
+      String fldmember_password="";
       String fldfirst_name="";
       String fldlast_name="";
       String fldemail="";
@@ -629,8 +626,7 @@ if ( ! getParam( request, "member_password" ).equals(getParam( request,"member_p
         // Load primary key, form parameters and form fields
         fldmember_id = getParam( request, "member_id");
         fldmember_login = getParam( request, "member_login");
-        //fldmember_password = getParam( request, "member_password");
-        GuardedString fldmember_password = new GuardedString(getParam(request, "member_password").toCharArray());
+        fldmember_password = getParam( request, "member_password");
         fldfirst_name = getParam( request, "first_name");
         fldlast_name = getParam( request, "last_name");
         fldemail = getParam( request, "email");

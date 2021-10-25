@@ -1,9 +1,7 @@
-import java.sql.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 import org.apache.jasper.runtime.*;
-import org.identityconnectors.common.security.GuardedString.*;
 
 public class Login_jsp extends HttpJspBase {
 
@@ -48,7 +46,10 @@ public class Login_jsp extends HttpJspBase {
   }
 
   java.sql.ResultSet openrs(java.sql.Statement stat, String sql) throws java.sql.SQLException {
-    java.sql.ResultSet rs = stat.executeQuery(sql);
+    
+    import org.apache.commons.lang.StringEscapeUtils;
+    String escapedSQL = StringEscapeUtils.escapeSql(sql);
+    java.sql.ResultSet rs = stat.executeQuery(escapedSQL);
     return (rs);
   }
 
@@ -439,15 +440,9 @@ static final String sFileName = "Login.jsp";
           // Login action
          
           String sLogin = getParam( request, "Login");
-          //String sPassword = getParam( request, "Password");
-          GuardedString sPassword = new GuardedString(getParam(request, "Password").toCharArray());
-          //java.sql.ResultSet rs = null;
-          //PreparedStatement stat = null;
-          PreparedStatement stat = connection.prepareStatement("select member_id, member_level from members where member_login = ? and member_password = ?");
-          stat.setString(1, toSQL(sLogin, adText));
-          stat.setString(2, toSQL(sPassword, adText));
-          ResultSet rs = stat.executeQuery();
-          //rs = openrs( stat, "select member_id, member_level from members where member_login =" + toSQL(sLogin, adText) + " and member_password=" + toSQL(sPassword, adText));
+          String sPassword = getParam( request, "Password");
+          java.sql.ResultSet rs = null;
+          rs = openrs( stat, "select member_id, member_level from members where member_login =" + toSQL(sLogin, adText) + " and member_password=" + toSQL(sPassword, adText));
           
           if ( rs.next() ) {
             // Login and password passed

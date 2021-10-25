@@ -2,7 +2,6 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 import org.apache.jasper.runtime.*;
-import org.identityconnectors.common.security.GuardedString.*;
 
 public class MyInfo_jsp extends HttpJspBase {
 
@@ -469,7 +468,7 @@ static final String sFileName = "MyInfo.jsp";
 
 
       String fldUserID="";
-      //String fldmember_password="";
+      String fldmember_password="";
       String fldname="";
       String fldlast_name="";
       String fldemail="";
@@ -483,8 +482,7 @@ static final String sFileName = "MyInfo.jsp";
       // Load all form fields into variables
     
       fldUserID = (String) session.getAttribute("UserID");
-      //fldmember_password = getParam(request, "member_password");
-      GuardedString fldmember_password = new GuardedString(getParam(request, "member_password").toCharArray());
+      fldmember_password = getParam(request, "member_password");
       fldname = getParam(request, "name");
       fldlast_name = getParam(request, "last_name");
       fldemail = getParam(request, "email");
@@ -579,7 +577,7 @@ static final String sFileName = "MyInfo.jsp";
 
       String fldUserID="";
       String fldmember_id="";
-      //String fldmember_password="";
+      String fldmember_password="";
       String fldname="";
       String fldlast_name="";
       String fldemail="";
@@ -599,8 +597,7 @@ static final String sFileName = "MyInfo.jsp";
       else {
         // Load primary key, form parameters and form fields
         fldmember_id = getParam( request, "member_id");
-        //fldmember_password = getParam( request, "member_password");
-        GuardedString fldmember_password = new GuardedString(getParam(request, "member_password").toCharArray());
+        fldmember_password = getParam( request, "member_password");
         fldname = getParam( request, "name");
         fldlast_name = getParam( request, "last_name");
         fldemail = getParam( request, "email");

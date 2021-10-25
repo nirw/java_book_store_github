@@ -1,4 +1,3 @@
-import java.sql.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
@@ -531,7 +530,6 @@ static final String sFileName = "BookDetail.jsp";
       
       if ( isEmpty(pitem_id)) { bPK = false; }
       
-      //sWhere += "item_id=" + toSQL(pitem_id, adNumber);
       sWhere += "item_id=" + toSQL(pitem_id, adNumber);
       primaryKeyParams += "<input type=\"hidden\" name=\"PK_item_id\" value=\""+pitem_id+"\"/>";
 
