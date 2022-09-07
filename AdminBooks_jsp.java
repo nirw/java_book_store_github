@@ -1,8 +1,7 @@
 
 public class AdminBooks_jsp extends HttpJspBase {
 
-//
-//
+
 //
 //   Filename: Common.jsp
 //   Generated with CodeCharge  v.1.2.0
@@ -18,6 +17,7 @@ public class AdminBooks_jsp extends HttpJspBase {
   static final int adNumber = 3;
   static final int adSearch_ = 4;
   static final int ad_Search_ = 5;
+  
   static final String appPath   ="/";
 
 //Database connection string
@@ -417,8 +417,6 @@ static final String sFileName = "AdminBooks.jsp";
 
   void Search_Show (javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response, javax.servlet.http.HttpSession session, javax.servlet.jsp.JspWriter out, String sSearchErr, String sForm, String sAction, java.sql.Connection conn, java.sql.Statement stat) throws java.io.IOException {
     try {
-      
-
       String fldcategory_id="";
       String fldis_recommended="";
 
@@ -432,7 +430,7 @@ static final String sFileName = "AdminBooks.jsp";
       out.println("    <table style=\"\">");
       
       out.println("     <form method=\"get\" action=\"AdminBooks.jsp\" name=\"Search\">\n     <tr>");
-      // Set variables with search parameters
+      // Set variables with search params
       
       fldcategory_id = getParam( request, "category_id");
       fldis_recommended = getParam( request, "is_recommended");
@@ -529,7 +527,7 @@ static final String sFileName = "AdminBooks.jsp";
       if ( sSort.equals(sSorted)) { 
         sSorted="0";
         sForm_Sorting = "";
-        sDirection = " DESC";
+        sDirection = " DESCRIPTION";
         sSortParams = "FormItems_Sorting=" + sSort + "&FormItems_Sorted=" + sSort + "&";
       }
       else {
